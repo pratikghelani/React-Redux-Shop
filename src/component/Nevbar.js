@@ -1,12 +1,14 @@
 import React from 'react'
-import { useSelector,useDispatch } from 'react-redux';
 import {Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+// import { cartitem ,cartprice} from '../redux/Reducer/reducer';
 
 export default function Nevbar() {
-
-    const cartItem = useSelector(state => state.readucer);
+    // const cartitem = 10;
+    // const cartprice = 10;
+    const cartitem = useSelector(state => state.cartitem);
     const cartprice = useSelector(state => state.cartprice);
-    
+
         return (
     <>
         <nav className="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,8 +27,8 @@ export default function Nevbar() {
                         </li>
                     </ul>
                     <div className="d-flex">
-                        <Link to="/cart" class="btn btn-warning"> <i class="bi bi-cart-fill"></i> :<b> {cartItem}</b></Link>
-                        <Link to="/cart" class="btn btn-warning" style={{marginLeft: 20}}> <i class="bi bi-cash-coin"></i> : <b>$: {cartprice}   </b></Link>
+                        <Link to="/cart" class="btn btn-warning"> <i class="bi bi-cart-fill"></i> :<b> {cartitem} </b></Link>
+                        <Link to="/cart" class="btn btn-warning" style={{marginLeft: 20}}> <i class="bi bi-cash-coin"></i> : <b>$: {cartprice.toFixed(2)}  </b></Link>
                     </div>
                 </div>
             </div>

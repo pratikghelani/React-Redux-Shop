@@ -1,10 +1,25 @@
 import React from 'react'
-// import {Link } from "react-router-dom";
-import { increment,decrement } from '../redux/Action/action';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
+
+import {pricedecrement} from "../redux/Action/action";
+import {priceincrement} from "../redux/Action/action";
+import {incrementcart} from "../redux/Action/action";
+import {decrementcart} from "../redux/Action/action";
+
 export default function Product(props) {
-  const readucer = useSelector(state => state.readucer);
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    function add (number){
+      // alert(number);
+      dispatch(incrementcart(1));
+      dispatch(priceincrement(number));
+    }
+
+    function remove (number){
+      // alert(number);
+      dispatch(decrementcart(1));
+      dispatch(pricedecrement(number));
+    }
+
   return (
     <>
       <div className="col-md-3 col-sm-1 mt-4">
@@ -18,8 +33,8 @@ export default function Product(props) {
             </div>
             {/* <Link to="/" className="btn btn-primary" style={{width: '100%'}}> Add To Cart</Link> */}
             <div className="d-flex justify-content-between">
-              <button button type="button" className="btn btn-primary" onClick={() => dispatch(increment())} style={{ width: '70%' }}> Add To Cart</button>
-              <button type="button" className="btn btn-danger" onClick={() => dispatch(decrement(props.price))} style={{ width: '20%' }}><i className="bi bi-trash3-fill"></i></button>
+              <button button type="button" className="btn btn-primary"   style={{ width: '70%' }} onClick={() => add(props.price) }> Add To Cart</button>
+              <button type="button" className="btn btn-danger"  style={{ width: '20%' }} onClick={() => remove(props.price)}><i className="bi bi-trash3-fill"></i></button>
             </div>
           </div>
         </div>

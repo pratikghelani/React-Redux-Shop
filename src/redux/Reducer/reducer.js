@@ -1,16 +1,17 @@
- const inicialState = 0;
 
- const cartitem = (state = inicialState, action) => {
+ export const cartitem = (state = 0, action) => {
      switch(action.type) {
-         case "increment":
-             return state + 1;
-
-         case "decrememt":
+         case "incrementcart":
+             return state + action.payload;
+         case "decrememtcart":
             if(state <= 0 ){
                 state = 0;  
             }
             else {
-                state =  state - 1;
+                state =  state - action.payload;
+                if(state <= 0 ){
+                    state = 0;  
+                }
             }  
              return state;
 
@@ -19,6 +20,22 @@
      }
  }
 
-
-
- export default cartitem ;
+ export const cartprice = (state = 0, action) => {
+    switch(action.type) {
+        case "priceincrement":
+            return state + action.payload;
+        case "pricedecrement":
+           if(state <= 0 ){
+               state = 0;  
+           }
+           else {
+               state =  state - action.payload;
+               if(state <= 0 ){
+                state = 0;  
+            }
+           }  
+            return state;
+        default:
+           return state;
+    }
+}

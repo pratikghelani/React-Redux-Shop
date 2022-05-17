@@ -1,27 +1,27 @@
-export const increment = () => {
+export const incrementcart = (numb) => {
     return {
-        type : "increment"
+        type : "incrementcart",
+        payload : numb
     }
 }
 
-export const decrement = () => {
+export const decrementcart = (numb) => {
     return {
-        type : "decrememt"
+        type : "decrememtcart",
+        payload : numb
     }
 }
 
-export const priceincrement = (price) => {
+export const priceincrement = (numb) => {
     return {
         type : "priceincrement",
-        payload : price
+        payload : numb
     }
 }
 
-export const pricedecrement = (price) => {
+export const pricedecrement = (numb) => {
     return {
         type : "pricedecrement",
-        payload : price
+        payload : numb
     }   
 }
-
-
